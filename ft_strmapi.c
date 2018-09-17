@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strmapi.c                                     .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:28:02 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:28:03 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,26 +15,19 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	char			*map;
 	unsigned int	i;
-	int				length;
-	char			*str;
 
 	i = 0;
-	length = 0;
-	str = NULL;
-	if (s && f)
+	if (!s)
+		return (NULL);
+	map = ft_strdup((char *)s);
+	if (!map || !f)
+		return (NULL);
+	while (map[i])
 	{
-		while (s[length])
-			length++;
-		str = (char *)malloc(length + 1);
-		if (!str)
-			return (NULL);
-		while (s[i])
-		{
-			str[i] = (*f)(i, s[i]);
-			i++;
-		}
-		str[i] = 0;
+		map[i] = f(i, map[i]);
+		i++;
 	}
-	return (str);
+	return (map);
 }

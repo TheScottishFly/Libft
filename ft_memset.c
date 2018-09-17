@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memset.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:25:45 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:25:48 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,15 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	t_byte *cb;
+	unsigned int	i;
+	unsigned char	*str;
 
-	cb = (t_byte *)b;
-	while (len--)
-		*cb++ = (t_byte)c;
+	i = 0;
+	str = b;
+	while (i < len)
+	{
+		str[i] = (unsigned char)c;
+		i++;
+	}
 	return (b);
 }

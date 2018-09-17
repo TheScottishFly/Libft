@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strrchr.c                                     .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:28:37 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:28:38 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,18 +15,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *last;
+	char	*str;
+	int		i;
 
-	last = NULL;
-	while (*s)
+	i = 0;
+	str = NULL;
+	while (s[i])
 	{
-		if (!ft_isascii(*s))
-			return (NULL);
-		if (*s == c)
-			last = (char *)s;
+		if (s[i] == (char)c)
+			str = (char *)s;
 		s++;
 	}
-	if (c == '\0')
-		last = (char *)s;
-	return (last);
+	if (*s == (char)c)
+		str = (char *)s;
+	return (str);
 }

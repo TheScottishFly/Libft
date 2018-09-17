@@ -1,69 +1,67 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_itoa.c                                        .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:24:15 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:24:16 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_countchars(int n)
+static long		ft_digitnb(int n)
 {
-	int i;
+	long	size;
 
-	i = 1;
+	if (n == 0)
+		return (1);
+	size = 0;
 	if (n < 0)
 	{
-		i++;
+		size++;
 		n = -n;
 	}
-	while (n > 10)
+	while (n != 0)
 	{
-		i++;
 		n /= 10;
+		size++;
 	}
-	return (i);
+	return (size++);
 }
 
-static int	ft_isneg(int n)
+static int		ft_sign(int n)
 {
 	if (n < 0)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char			*str;
-	int				i;
-	int				sign;
-	unsigned int	p;
+	long	n_long;
+	long	len;
+	char	*nbr;
 
-	sign = ft_isneg(n);
-	i = 0;
-	p = n;
-	str = (char *)malloc(ft_countchars(n) + 1);
-	if (!str)
+	n_long = n;
+	len = ft_digitnb(n_long);
+	nbr = (char *)malloc((len + 1) * sizeof(char));
+	if (!nbr)
 		return (NULL);
-	if (sign == 1)
-		p = -n;
-	if (p == 0)
-		str[i++] = '0';
-	while (p > 0)
+	nbr[len] = '\0';
+	len--;
+	if (n_long < 0)
+		n_long = -n_long;
+	while (len >= 0)
 	{
-		str[i++] = p % 10 + '0';
-		p /= 10;
+		nbr[len] = (n_long % 10) + '0';
+		len--;
+		n_long /= 10;
 	}
-	if (sign == 1)
-		str[i++] = '-';
-	str[i] = '\0';
-	str = ft_strrev(str);
-	return (str);
+	if (ft_sign(n))
+		nbr[0] = '-';
+	return (nbr);
 }

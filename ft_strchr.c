@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:26:57 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:26:58 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,13 +15,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != c)
+	int		i;
+
+	i = 0;
+	while (s[i])
 	{
-		if (!ft_isascii(*s))
-			return (NULL);
-		s++;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
 	}
-	if (*s != c)
-		return (NULL);
-	return ((char *)s);
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }

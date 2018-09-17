@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memchr.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:25:18 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:25:19 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,13 +15,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char *p;
+	size_t	i;
+	char	*string;
 
-	p = (unsigned char *)s;
-	while (n--)
-		if (*p != (unsigned char)c)
-			p++;
-		else
-			return (p);
-	return (0);
+	i = 0;
+	string = (void *)s;
+	while (i < n)
+	{
+		if (string[i] == (char)c)
+			return (&string[i]);
+		i++;
+	}
+	return (NULL);
 }

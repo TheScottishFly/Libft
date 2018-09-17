@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strstr.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:28:52 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:28:53 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strstr(const char *haystack, const char *needle)
+char	*ft_strstr(const char *str, const char *to_find)
 {
-	char	*begin;
-	char	*begin_tf;
+	int		i;
+	int		j;
+	int		k;
 
-	if (ft_strlen(needle) == 0)
-		return ((char *)haystack);
-	while (*haystack)
+	i = 0;
+	j = 0;
+	k = 0;
+	while (to_find[i])
+		i++;
+	if (i == 0)
+		return ((char *)str);
+	while (str[k])
 	{
-		begin = (char *)haystack;
-		begin_tf = (char *)needle;
-		while (*haystack && *needle && *haystack == *needle)
+		while (to_find[j] == str[k + j])
 		{
-			haystack++;
-			needle++;
+			if (j == i - 1)
+				return ((char *)(str + k));
+			j++;
 		}
-		if (!(*needle))
-			return (begin);
-		else
-		{
-			haystack = begin;
-			needle = begin_tf;
-		}
-		haystack++;
+		j = 0;
+		k++;
 	}
 	return (0);
 }

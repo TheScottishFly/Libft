@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_lstmap.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:24:53 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:24:54 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,20 +15,7 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*item;
-	t_list	*begin;
-
-	item = (*f)(lst);
-	begin = item;
-	if (!item)
-		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-		item->next = (*f)(lst);
-		if (item->next == NULL)
-			return (NULL);
-		item = item->next;
-	}
-	return (begin);
+	(void)lst;
+	(void)f;
+	return (NULL);
 }

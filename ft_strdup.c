@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strdup.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:27:26 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:27:27 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	int		length;
-	int		i;
-	char	*new_str;
+	char	*copy;
 
-	length = 0;
-	i = 0;
-	while (s1[length])
-		length++;
-	new_str = malloc((length + 1) * sizeof(char));
-	if (new_str == NULL)
+	copy = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (copy == NULL)
 		return (NULL);
-	while (s1[i])
-	{
-		new_str[i] = s1[i];
-		i++;
-	}
-	new_str[i] = '\0';
-	return (new_str);
+	else
+		copy = ft_strcpy(copy, s);
+	return (copy);
 }

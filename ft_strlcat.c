@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strlcat.c                                     .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:27:48 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:27:49 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char		*pdst;
-	const char	*psrc;
-	size_t		n;
-	size_t		dstlen;
+	char		*dest;
+	const char	*source;
+	size_t		i;
+	size_t		len;
 
-	pdst = dst;
-	psrc = src;
-	n = size;
-	while (*pdst != '\0' && n-- != 0)
-		pdst++;
-	dstlen = pdst - dst;
-	n = size - dstlen;
-	if (n == 0)
-		return (dstlen + ft_strlen(src));
-	while (*psrc != '\0')
+	dest = dst;
+	source = src;
+	i = size;
+	while (*dest != '\0' && i-- != 0)
+		dest++;
+	len = dest - dst;
+	i = size - len;
+	if (i == 0)
+		return (len + ft_strlen(src));
+	while (*source != '\0')
 	{
-		if (n != 1)
+		if (i != 1)
 		{
-			*pdst++ = *psrc;
-			n--;
+			*dest++ = *source;
+			i--;
 		}
-		psrc++;
+		source++;
 	}
-	*pdst = '\0';
-	return (dstlen + (psrc - src));
+	*dest = '\0';
+	return (len + (source - src));
 }

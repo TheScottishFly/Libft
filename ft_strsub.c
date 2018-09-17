@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strsub.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:28:56 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:28:57 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,17 +15,18 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
+	char			*sub;
 	unsigned int	i;
-	int				j;
-	char			*cs;
 
-	i = start;
-	j = 0;
-	cs = (char *)malloc(len + 1);
-	if (!cs || !s)
+	i = 0;
+	if (!s || !(sub = (char *)ft_memalloc(len + 1)))
 		return (NULL);
-	while (i < (start + (unsigned int)len))
-		cs[j++] = s[i++];
-	cs[j] = '\0';
-	return (cs);
+	while (i < len)
+	{
+		sub[i] = s[start];
+		i++;
+		start++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }

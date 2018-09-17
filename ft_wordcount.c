@@ -13,31 +13,18 @@
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+int		ft_wordcount(const char *str, char delim)
 {
-	size_t	i;
+	int		i;
 	int		j;
-	int		scan;
 
 	i = 0;
 	j = 0;
-	scan = 0;
-	while (needle[scan])
-		scan++;
-	if (scan == 0)
-		return ((char*)haystack);
-	while (haystack[i])
+	while (str[i])
 	{
-		while (needle[j] == haystack[i] && i < len)
-		{
-			i++;
+		if (str[i - 1] != delim && (str[i] == delim || str[i]))
 			j++;
-			if (needle[j] == '\0')
-				return (((char*)haystack) + i - scan);
-		}
-		i = i - j;
-		j = 0;
 		i++;
 	}
-	return (NULL);
+	return (j);
 }

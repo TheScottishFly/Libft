@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strnew.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:28:27 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:28:30 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,17 @@
 
 char	*ft_strnew(size_t size)
 {
-	char *str;
+	char	*new;
+	size_t	i;
 
-	str = (char *)malloc((size + 1) * sizeof(char));
-	if (!str)
+	i = 0;
+	if (!(new = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
-	return (ft_memset(str, 0, size + 1));
+	while (i < size)
+	{
+		new[i] = '\0';
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }

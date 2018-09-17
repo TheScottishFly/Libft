@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putnbr_fd.c                                   .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:26:33 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:26:34 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,19 +15,18 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int p;
-
-	p = n;
+	if (n == -2147483648)
+		return (ft_putstr_fd("-2147483648", fd));
 	if (n < 0)
 	{
+		n = -n;
 		ft_putchar_fd('-', fd);
-		p = -n;
 	}
-	if (p >= 10)
+	if (n > 9)
 	{
-		ft_putnbr_fd(p / 10, fd);
-		ft_putnbr_fd(p % 10, fd);
+		ft_putnbr_fd((n / 10), fd);
+		ft_putchar_fd((n % 10 + '0'), fd);
 	}
 	else
-		ft_putchar_fd(p + '0', fd);
+		ft_putchar_fd((n + '0'), fd);
 }

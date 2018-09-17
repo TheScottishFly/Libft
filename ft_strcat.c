@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strcat.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:26:53 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:26:53 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_strcat(char *dest, char *src)
 {
 	int		i;
-	int		length;
+	int		j;
 
 	i = 0;
-	length = ft_strlen(s1);
-	while (s2[i])
+	j = 0;
+	while (dest[j])
+		j++;
+	while (src[i])
 	{
-		s1[length + i] = s2[i];
+		dest[j] = src[i];
+		j++;
 		i++;
 	}
-	s1[length + i] = '\0';
-	return (s1);
+	dest[j] = '\0';
+	return (dest);
 }

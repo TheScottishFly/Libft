@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strncmp.c                                     .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:28:11 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:28:11 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,14 +15,14 @@
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*(t_byte *)s1 == *(t_byte *)s2 && n--)
-	{
-		if (*s1 == '\0' || *s2 == '\0')
-			return (0);
-		s1++;
-		s2++;
-	}
-	if (!n)
-		return ((*(t_byte *)--s1 - *(t_byte *)--s2));
-	return (*(t_byte *)s1 - *(t_byte *)s2);
+	size_t	i;
+
+	i = 0;
+	while ((unsigned char)s1[i] == (unsigned char)s2[i]
+			&& s1[i] && s2[i] && i < n - 1)
+		i++;
+	if (n > 0)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	else
+		return (0);
 }

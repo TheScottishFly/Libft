@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memcmp.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:25:23 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:25:25 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,15 +15,19 @@
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+	const unsigned char	*ps1;
+	const unsigned char	*ps2;
+
+	ps1 = s1;
+	ps2 = s2;
 	while (n--)
 	{
-		if (*(t_byte *)s1 != *(t_byte *)s2)
-			return (*(t_byte *)s1 - *(t_byte *)s2);
-		else
+		if (*ps1 != *ps2)
 		{
-			s1++;
-			s2++;
+			return (*ps1 - *ps2);
 		}
+		ps1++;
+		ps2++;
 	}
 	return (0);
 }

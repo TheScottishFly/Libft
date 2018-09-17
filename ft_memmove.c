@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memmove.c                                     .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:25:40 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:25:42 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,15 +15,24 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_byte	*cdst;
-	t_byte	*csrc;
-	t_byte	*tmp;
+	size_t			i;
+	unsigned char	*dest;
+	unsigned char	*source;
 
-	cdst = (t_byte *)dst;
-	csrc = (t_byte *)src;
-	tmp = (t_byte *)malloc(len);
-	ft_memcpy(tmp, csrc, len);
-	ft_memcpy(cdst, tmp, len);
-	free(tmp);
+	i = 0;
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	if (dest > source)
+		while (i < len)
+		{
+			dest[len - 1] = source[len - 1];
+			len--;
+		}
+	else
+		while (i < len)
+		{
+			dest[i] = source[i];
+			i++;
+		}
 	return (dst);
 }

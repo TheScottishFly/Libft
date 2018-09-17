@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memalloc.c                                    .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:25:05 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:25:08 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,17 +15,14 @@
 
 void	*ft_memalloc(size_t size)
 {
-	char			*buf;
-	unsigned long	i;
+	void	*mem;
 
-	buf = malloc(size);
-	i = 0;
-	if (!buf)
-		return (NULL);
-	while (i < size)
+	mem = malloc(size);
+	if (mem)
 	{
-		buf[i] = 0;
-		i++;
+		ft_bzero(mem, size);
+		return (mem);
 	}
-	return ((void *)buf);
+	else
+		return (NULL);
 }

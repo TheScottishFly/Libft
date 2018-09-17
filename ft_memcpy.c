@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memcpy.c                                      .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:25:29 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:25:31 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,15 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	t_byte *cdst;
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
 
-	cdst = dst;
-	while (n--)
+	tmp1 = (unsigned char *)src;
+	tmp2 = (unsigned char *)dst;
+	while (n > 0)
 	{
-		*(t_byte *)dst++ = *(t_byte *)src++;
+		*tmp2++ = *tmp1++;
+		n--;
 	}
-	return (cdst);
+	return (dst);
 }

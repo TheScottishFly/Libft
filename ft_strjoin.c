@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strjoin.c                                     .::    .:/ .      .::   */
+/*   ft_ls.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: grosnet- <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/23 10:27:44 by grosnet-     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/23 10:27:45 by grosnet-    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 16:01:22 by grosnet-     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/24 12:10:36 by grosnet-    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,26 +15,17 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	char	*newstr;
+	char	*s3;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
-	newstr = (char *)malloc(i + j + 1);
-	if (!newstr)
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	if (!(s3 = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-	{
-		newstr[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-		newstr[i++] = s2[j++];
-	newstr[i] = '\0';
-	return (newstr);
+	ft_strcpy(s3, s1);
+	ft_strcat(s3, (char *)s2);
+	return (s3);
 }
